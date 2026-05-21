@@ -1,0 +1,16 @@
+name: Sync fork with upstream
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync-develop:
+    uses: ryan-newinsights/github-workflows/.github/workflows/fork-sync.yml@main
+    with:
+      upstream_repo: chatwoot/chatwoot
+      branch: develop
+      strategy: rebase
+    permissions:
+      contents: write
